@@ -34,6 +34,16 @@ void setup() {
   digitalWrite(ledBlue, LOW);
   delay(1000);
   digitalWrite(ledBlue, HIGH);
+
+  digitalWrite(goalRed, LOW);
+  delay(1000);
+  digitalWrite(goalRed, HIGH);
+  digitalWrite(goalGreen, LOW);
+  delay(1000);
+  digitalWrite(goalGreen, HIGH);
+  digitalWrite(goalBlue, LOW);
+  delay(1000);
+  digitalWrite(goalBlue, HIGH);
 }
 
 void loop() {

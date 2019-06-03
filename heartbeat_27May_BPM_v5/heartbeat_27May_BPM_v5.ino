@@ -1,11 +1,11 @@
 // definitions
-const int HR_RX = 2; // initialising sensor to pin 7
-const int buzzer = 3;
+const int HR_RX = 2; // initialising sensor to pin 2
+const int buzzer = 3; // initialising buzzer to pin 2
 byte oldSample, sample; // byte size variables (0-255)
 int BPM; // heart rate variable
 long pulseTime, lastPulseTime; // variables for measuring difference time between pulse signals
 const char* colour;
-int goal = random(70,95);
+int goal = random(70,150);
 int match;
 bool score = false;
 
@@ -44,7 +44,7 @@ volatile int diff10 = 0;
 void setup() {
   Serial.begin(9600); // sets data rate in bits per second
   pinMode(HR_RX, INPUT); //sets signal pin to input
-  pinMode(buzzer, OUTPUT);
+  pinMode(buzzer, OUTPUT); //set buzzer to output
   
   pinMode(ledRed, OUTPUT);
   pinMode(ledGreen, OUTPUT);
@@ -109,9 +109,9 @@ void loop() {
       match = goal;
       colourPicker(match, ledRed, ledGreen, ledBlue);
       colourPicker(match, goalRed, goalGreen, goalBlue);
-      party();
-      goal = random(60,150);
-      guide();
+      party(); // let wearer and viewer know that the goal has been met
+      goal = random(60,150); // choose a new goal
+      guide(); // play a sound to indicate if new goal is higher or lower than current BPM
     }
   }
   colourPicker(BPM, ledRed, ledGreen, ledBlue); // use colourPicker (see below) to set BPM colour
